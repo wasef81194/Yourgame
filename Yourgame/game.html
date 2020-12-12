@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<title>Game</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style/style.css">
+</head>
+<body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<h1>Pierre Feuille Ciseau</h1>
+	<button id="pierre">Pierre</button>
+	<button id="feuille">Feuille</button>
+	<button id="ciseau">Ciseau</button>
+	<p>MANCHE<div id="manche">0</div></p>
+	<p>Vous<div id="score_user">0</div></p>
+	<p>Adversaire<div id="score_robot">0</div></p>
+	<div id="combat"></div>
+	<div id="resultat"></div>
+	
+
+	<script type="text/javascript">
+
+	//function
+	function getRandomIntInclusive(min, max) {
+	  min = Math.ceil(min);
+	  max = Math.floor(max);
+	  return Math.floor(Math.random() * (max - min +1)) + min;
+	}
+
+	function Robot(probabiliter) {
+		if (probabiliter>=0 && probabiliter<=50 ) {
+			var action = "Feuille";
+		}
+		else if(probabiliter>50 && probabiliter<=100){
+			var action = "Ciseau";
+		}
+		else{
+			var action = "Pierre";
+		}
+		return action;
+	}
+
+	function Combat(user,robot){
+		if(user=="Feuille" && robot=="Feuille" || user=="Pierre" && robot=="Pierre" || user=="Ciseau" && robot=="Ciseau"){
+			resultat = "Egaliter";
+		}
+		else if (user=="Ciseau" && robot=="Feuille" || user=="Feuille" && robot=="Pierre" || user=="Pierre" && robot=="Ciseau") {
+			resultat = "Vous avez gagner";
+		}
+		else if (user=="Feuille" && robot=="Ciseau" || user=="Pierre" && robot=="Feuille" || user=="Ciseau" && robot=="Pierre") {
+			resultat = "Vous avez perdu";
+		}
+		return resultat;
+	}
+	function End(score_robot,score_user){
+		if (score_robot>=5 || score_user>=5 ) {
+			if (score_robot>score_user) {
+				end = "Vous avez perdu";
+			}
+			else if(score_robot<score_user){
+				end = "Vous avez perdu";
+			}
+		return end;
+		}
+	}
+
+	function Result(pierre,feuille,ciseau,resultat,score_robot,score_user){
+		document.getElementById('pierre').disabled=true;
+		document.getElementById('feuille').disabled=true;
+		document.getElementById('ciseau').disabled=true;
+		if (score_robot==score_user) {
+			$("#resultat").html("Egaliter");
+		}
+		else if (score_robot>score_user) {
+			$("#resultat").html("Vous avez perdu ");
+		}
+		else if (score_robot<score_user) {
+			$("#resultat").html("Vous avez gagner");
+		}
+	}
+
+	//end of function
+
+
+	var score_user = parseInt(document.getElementById('score_user').innerHTML);
+	var score_robot = parseInt(document.getElementById('score_robot').innerHTML);
+	var manche = parseInt(document.getElementById('manche').innerHTML);
+	var end_manche = 10;
+
+
+	
+	//document.write(manche);
+	
+
+
+		
+		
+		$("#pierre").click(function(){
+			var getRandom = getRandomIntInclusive(0, 150);
+			//var getRandom = getRandomIntInclusive(0, 150);
+			var user = "Pierre";
+			var robot = Robot(getRandom);
+			$("#combat").html("<p>Vous : "+user+"</p> <p>Adversaire : "+Robot(getRandom)+"</p>"+"<p> Résultat : "+Combat(user,robot)+"</p>");
+			//Le score
+			if (Combat(user,robot)=="Vous avez perdu") {
+				score_robot +=1;
+				$("#score_robot").html(score_robot);
+
+			}
+			else if(Combat(user,robot)=="Vous avez gagner"){
+				score_user +=1;
+				$("#score_user").html(score_user);
+			}
+			// Nombre de manche 
+			manche += 1;
+			$("#manche").html(manche);
+			if(manche >= end_manche ){
+				Result(pierre,feuille,ciseau,resultat,score_robot,score_user);
+			}
+		})
+
+		$("#feuille").click(function(){
+			var getRandom = getRandomIntInclusive(0, 150);
+			//var getRandom = getRandomIntInclusive(0, 150);
+			var user = "Feuille";
+			var robot = Robot(getRandom);
+			$("#combat").html("<p>Vous : "+user+"</p> <p>Adversaire : "+Robot(getRandom)+"</p>"+"<p> Résultat : "+Combat(user,robot)+"</p>");
+			//Le score
+			if (Combat(user,robot)=="Vous avez perdu") {
+				score_robot +=1;
+				$("#score_robot").html(score_robot);
+			}
+			else if(Combat(user,robot)=="Vous avez gagner"){
+				score_user +=1;
+				$("#score_user").html(score_user);
+			}
+			// Nombre de manche 
+			manche += 1;
+			$("#manche").html(manche);
+			if(manche >= end_manche ){
+				Result(pierre,feuille,ciseau,resultat,score_robot,score_user);
+			}
+		})
+
+		$("#ciseau").click(function(){
+			var getRandom = getRandomIntInclusive(0, 150);
+			//var getRandom = getRandomIntInclusive(0, 150);
+			var user = "Ciseau";
+			var robot = Robot(getRandom);
+			$("#combat").html("<p>Vous : "+user+"</p> <p>Adversaire : "+Robot(getRandom)+"</p>"+"<p> Résultat : "+Combat(user,robot)+"</p>");
+			//Le score
+			if (Combat(user,robot)=="Vous avez perdu") {
+				score_robot +=1;
+				$("#score_robot").html(score_robot);
+			}
+			else if(Combat(user,robot)=="Vous avez gagner"){
+				score_user +=1;
+				$("#score_user").html(score_user);
+			}
+			// Nombre de manche 
+			manche += 1;
+			$("#manche").html(manche);
+			if(manche >= end_manche ){
+				 Result(pierre,feuille,ciseau,resultat,score_robot,score_user);
+			}
+		})
+
+	</script>
+
+</body>
+</html>
