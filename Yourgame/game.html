@@ -18,23 +18,24 @@
 
 	
 	<div id="score">
-		<div id="resultat"></div>
+		
 	<div id="sc_user">
 	<p>Vous<div id="score_user">0</div></p>
 	</div>
 	<div id="sc_robot">
 	<p>Adversaire<div id="score_robot">0</div></p>
 	</div>
-
+	
 	</div>
 	
 	<div id="bouton">
 	<button id="pierre"> <img src="css/images/pierre.jpg" alt="Pierre"></button>
 	<button id="feuille"><img src="css/images/feuille.jpg" alt="Feuille"></button>
 	<button id="ciseau"><img src="css/images/ciseau.jpg" alt="Ciseau"></button>
-	</div>
-	<div id="combat"></div>
 	
+	<div id="combat"></div>
+	<div id="resultat"></div>
+	</div>
 	
 
 	<script type="text/javascript">
@@ -88,14 +89,27 @@
 		document.getElementById('feuille').disabled=true;
 		document.getElementById('ciseau').disabled=true;
 		if (score_robot==score_user) {
-			$("#resultat").html("<p id ='res' >Egaliter <p>");
+			$("#resultat").html("<button id='recommencer'>Recommencer</button> ");
+			$("#res").css("background-color", "#e1dddc");
+			$("#sc_user").css("background-color", "#e1dddc");
+			$("#sc_robot").css("background-color", "#e1dddc");
 		}
 		else if (score_robot>score_user) {
-			$("#resultat").html("<p id ='res' >Vous avez perdu ");
+			$("#resultat").html("<button id='recommencer'>Recommencer</button> ");
+			$("#res").css("background-color", "#fa7967");
+			$("#sc_user").css("background-color", "#fa7967");
+			$("#sc_robot").css("background-color", "#98fa67");
 		}
 		else if (score_robot<score_user) {
-			$("#resultat").html("<p id ='res' >Vous avez gagner</p>");
+			$("#resultat").html(" <button id='recommencer'>Recommencer</button>  ");
+			$("#res").css("background-color", "#98fa67");
+			$("#sc_user").css("background-color", "#98fa67");
+			$("#sc_robot").css("background-color", "#fa7967");
 		}
+		$("#recommencer").click(function(){
+			window.location.reload();
+		})
+
 	}
 	function Pictures(jeu){
 		if (jeu == "Pierre") {
