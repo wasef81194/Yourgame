@@ -1,0 +1,110 @@
+h1{
+  font-size: 32px;
+  text-shadow: -1px -1px #0c0, 1px 1px #060, -3px 0 4px #000;
+  font-family:Arial, Helvetica, sans-serif;
+  color: #fff;
+  padding:16px;
+  font-weight:lighter;
+  -moz-box-shadow: 2px 2px 6px #888;  
+  -webkit-box-shadow: 2px 2px 6px #888;  
+  box-shadow:2px 2px 6px #888;  
+  text-align:center;
+  display:block;
+  margin:16px;
+  background-color:#60bda2;  
+}
+#bouton{
+  text-align: center;
+}
+button{
+  margin-right: 50px;
+}
+img{
+  width: 80px;
+  height: 80px;
+}
+#sc_user,#sc_robot{
+  margin-left: 50%;
+  display: inline-block;
+    font-weight: bold;
+    width: 100px;
+    height: 100px;
+    margin: 100px;
+    margin-top: 0;
+    background: white;
+    border-radius: 3px;
+    box-shadow: 0 0 10px rgba(0,0,0, .4);
+    text-align: center;
+    padding-top: 1px;
+}
+#score{
+  margin: 20px;
+  display: block;
+  text-align: center;
+}
+/*#resultat{
+  font-weight: bold;
+  width: 600px;
+  height: 100px;
+  margin: 100px auto;
+  background: white;
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(0,0,0, .4);
+  text-align: center;
+  padding-top: 30px;
+}*/
+#cobat{
+  display: block;
+  text-align: center;
+}
+#fight{
+  font-weight: bold;
+  width: 900px;
+  height: 200px;
+  margin: 10px auto;
+  background: white;
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(0,0,0, .4);
+  text-align: center;
+  padding-top: 5px;
+
+}
+#user,#robot{
+  margin-left: 50%;
+  display: inline-block;
+  font-weight: bold;
+  width: 100px;
+  height: 100px;
+  margin: 100px;
+  margin-top: 0;
+  text-align: center;
+  padding-top: 1px;
+}
+#head{
+  font-size: 25px;
+  text-shadow: -1px -1px black, 1px 1px black, -3px 0 4px #000;
+  font-family:Arial, Helvetica, sans-serif;
+  color: #fff;
+  padding:10px;
+  font-weight:lighter;
+  -moz-box-shadow: 2px 2px 6px #888;  
+  -webkit-box-shadow: 2px 2px 6px #888;  
+  box-shadow:2px 2px 6px #888;  
+  text-align:center;
+  display:block;
+  margin:10px;
+  margin-left: 38%;
+  margin-right: 38%;
+  background-color:#60bda2;  
+}
+#res{
+  font-weight: bold;
+  width: 500px;
+  height: 20px;
+  margin: 10px auto;
+  background: white;
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(0,0,0, .4);
+  text-align: center;
+  padding-top: 1px;
+}

@@ -3,19 +3,38 @@
 <head>
 	<title>Game</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="style/style.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 	<h1>Pierre Feuille Ciseau</h1>
-	<button id="pierre">Pierre</button>
-	<button id="feuille">Feuille</button>
-	<button id="ciseau">Ciseau</button>
+
+	
+	<div id="head">
 	<p>MANCHE<div id="manche">0</div></p>
+	</div>
+	
+
+	
+	<div id="score">
+		<div id="resultat"></div>
+	<div id="sc_user">
 	<p>Vous<div id="score_user">0</div></p>
+	</div>
+	<div id="sc_robot">
 	<p>Adversaire<div id="score_robot">0</div></p>
+	</div>
+
+	</div>
+	
+	<div id="bouton">
+	<button id="pierre"> <img src="css/images/pierre.jpg" alt="Pierre"></button>
+	<button id="feuille"><img src="css/images/feuille.jpg" alt="Feuille"></button>
+	<button id="ciseau"><img src="css/images/ciseau.jpg" alt="Ciseau"></button>
+	</div>
 	<div id="combat"></div>
-	<div id="resultat"></div>
+	
 	
 
 	<script type="text/javascript">
@@ -69,14 +88,26 @@
 		document.getElementById('feuille').disabled=true;
 		document.getElementById('ciseau').disabled=true;
 		if (score_robot==score_user) {
-			$("#resultat").html("Egaliter");
+			$("#resultat").html("<p id ='res' >Egaliter <p>");
 		}
 		else if (score_robot>score_user) {
-			$("#resultat").html("Vous avez perdu ");
+			$("#resultat").html("<p id ='res' >Vous avez perdu ");
 		}
 		else if (score_robot<score_user) {
-			$("#resultat").html("Vous avez gagner");
+			$("#resultat").html("<p id ='res' >Vous avez gagner</p>");
 		}
+	}
+	function Pictures(jeu){
+		if (jeu == "Pierre") {
+			img = '<img src="css/images/pierre.jpg" alt="Pierre">' ;
+		}
+		else if(jeu == "Feuille"){
+			img = '<img src="css/images/feuille.jpg" alt="Feuille">' ;
+		}
+		else if(jeu == "Ciseau"){
+			img = '<img src="css/images/ciseau.jpg" alt="Ciseau">' ;
+		}
+		return img;
 	}
 
 	//end of function
@@ -100,7 +131,7 @@
 			//var getRandom = getRandomIntInclusive(0, 150);
 			var user = "Pierre";
 			var robot = Robot(getRandom);
-			$("#combat").html("<p>Vous : "+user+"</p> <p>Adversaire : "+Robot(getRandom)+"</p>"+"<p> Résultat : "+Combat(user,robot)+"</p>");
+			$("#combat").html("<div id='fight'><p> <div id='user'> Vous : "+ Pictures(user)+"</p></div>"+Combat(user,robot)+" <div id='robot'> <p>Adversaire : "+Pictures(Robot(getRandom))+"</p></div>");
 			//Le score
 			if (Combat(user,robot)=="Vous avez perdu") {
 				score_robot +=1;
@@ -124,7 +155,7 @@
 			//var getRandom = getRandomIntInclusive(0, 150);
 			var user = "Feuille";
 			var robot = Robot(getRandom);
-			$("#combat").html("<p>Vous : "+user+"</p> <p>Adversaire : "+Robot(getRandom)+"</p>"+"<p> Résultat : "+Combat(user,robot)+"</p>");
+			$("#combat").html("<div id='fight'><p> <div id='user'> Vous : "+ Pictures(user)+"</p></div>"+Combat(user,robot)+" <div id='robot'> <p>Adversaire : "+Pictures(Robot(getRandom))+"</p></div>");
 			//Le score
 			if (Combat(user,robot)=="Vous avez perdu") {
 				score_robot +=1;
@@ -147,7 +178,7 @@
 			//var getRandom = getRandomIntInclusive(0, 150);
 			var user = "Ciseau";
 			var robot = Robot(getRandom);
-			$("#combat").html("<p>Vous : "+user+"</p> <p>Adversaire : "+Robot(getRandom)+"</p>"+"<p> Résultat : "+Combat(user,robot)+"</p>");
+			$("#combat").html("<div id='fight'><p> <div id='user'> Vous : "+ Pictures(user)+"</p></div>"+Combat(user,robot)+" <div id='robot'> <p>Adversaire : "+Pictures(Robot(getRandom))+"</p></div>");
 			//Le score
 			if (Combat(user,robot)=="Vous avez perdu") {
 				score_robot +=1;
