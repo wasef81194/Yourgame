@@ -42,12 +42,14 @@
 
 	//function
 	function getRandomIntInclusive(min, max) {
-	  min = Math.ceil(min);
-	  max = Math.floor(max);
-	  return Math.floor(Math.random() * (max - min +1)) + min;
+		//tirage d'un chiffre aléatoire
+	  	min = Math.ceil(min);
+	  	max = Math.floor(max);
+	  	return Math.floor(Math.random() * (max - min +1)) + min;
 	}
 
 	function Robot(probabiliter) {
+		//Pour que le robot puisse jouer
 		if (probabiliter>=0 && probabiliter<=50 ) {
 			var action = "Feuille";
 		}
@@ -61,6 +63,7 @@
 	}
 
 	function Combat(user,robot){
+		//resulatat de chaque manche
 		if(user=="Feuille" && robot=="Feuille" || user=="Pierre" && robot=="Pierre" || user=="Ciseau" && robot=="Ciseau"){
 			resultat = "Egaliter";
 		}
@@ -73,6 +76,7 @@
 		return resultat;
 	}
 	function End(score_robot,score_user){
+		//Resultat final du score
 		if (score_robot>=5 || score_user>=5 ) {
 			if (score_robot>score_user) {
 				end = "Vous avez perdu";
@@ -85,21 +89,25 @@
 	}
 
 	function Result(pierre,feuille,ciseau,resultat,score_robot,score_user){
+		//bloque les touches
 		document.getElementById('pierre').disabled=true;
 		document.getElementById('feuille').disabled=true;
 		document.getElementById('ciseau').disabled=true;
+		//si y'a égaliter
 		if (score_robot==score_user) {
 			$("#resultat").html("<button id='recommencer'>Recommencer</button> ");
 			$("#res").css("background-color", "#e1dddc");
 			$("#sc_user").css("background-color", "#e1dddc");
 			$("#sc_robot").css("background-color", "#e1dddc");
 		}
+		//si le robot gagne et l'utilsateur pers
 		else if (score_robot>score_user) {
 			$("#resultat").html("<button id='recommencer'>Recommencer</button> ");
 			$("#res").css("background-color", "#fa7967");
 			$("#sc_user").css("background-color", "#fa7967");
 			$("#sc_robot").css("background-color", "#98fa67");
 		}
+		//Si l'utilisateur gagne et le robot paire
 		else if (score_robot<score_user) {
 			$("#resultat").html(" <button id='recommencer'>Recommencer</button>  ");
 			$("#res").css("background-color", "#98fa67");
@@ -112,6 +120,7 @@
 
 	}
 	function Pictures(jeu){
+		//Met des photo a la pace des boutton
 		if (jeu == "Pierre") {
 			img = '<img src="css/images/pierre.jpg" alt="Pierre">' ;
 		}

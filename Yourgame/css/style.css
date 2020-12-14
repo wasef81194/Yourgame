@@ -1,3 +1,17 @@
+#message_erreur{
+  margin-top: 5px;
+  color: #fe3004;
+  font-weight: bold;
+  font-size: 18px;
+  background-color: #ffd1c7;
+}
+
+#message{
+  color: #00cc2e;
+  font-weight: bold;
+  font-size: 19px;
+  background-color: #bbfcc9;
+}
 h1{
   font-size: 32px;
   text-shadow: -1px -1px black, 1px 1px #060, -3px 0 4px #000;
@@ -113,4 +127,14 @@ img{
   text-align: center;
   padding-top: 1px;
 
+}
+form.inscription{
+  font-weight: bold;
+  width: 900px;
+  height: 800px;
+  margin: 10px auto;
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(0,0,0, .4);
+  text-align: center;
+  padding-top: 5px;
 }
