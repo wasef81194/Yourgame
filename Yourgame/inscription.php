@@ -52,7 +52,7 @@ if($_POST["formtype"] == "inscription"){
     }
     else{
       Inscription($nom,$prenom,$login,$hash);
-      $message = "Vous êtes bien inscrit";
+      header("Location:index.php");
     }
   }
   else{
@@ -66,6 +66,7 @@ if($_POST["formtype"] == "inscription"){
 <h1>Formulaire d'inscription</h1>
 		
 <form id="formulaire" action="./inscription.php" method="post" class="inscription">
+ <h2 id="title_inscription">Inscription </h2>
  <?php
   if (isset($message_erreur)) {
      echo '<div id="message_erreur">'.$message_erreur.'</div>';
@@ -112,12 +113,14 @@ if($_POST["formtype"] == "inscription"){
 	<input type="checkbox" name="amdp" id="amdp">
 	
 	<input type="hidden" name="formtype" value="inscription" />
-	<br><br><input name="envoyer" id="envoyer" type="submit"><input type="reset" name="effacer">
+	<br><br><input type="reset" name="effacer"><input name="envoyer" id="envoyer" type="submit">
+	<p>Vous n'avez déja compte?
+  	<a href=index.php>Connectez vous ici.</a></p>
 </form>
  
 <script type="text/javascript">
 	
-	function VerificationChamps(champs,message_champs){
+	function VerificationChamps(champs,message_champs,form){
 		//avant de valider
 		$("#envoyer").hover(function(){
 		//si le champs du login est vide
@@ -125,6 +128,8 @@ if($_POST["formtype"] == "inscription"){
 				$(message_champs).html("<p>Ce champ est vide</p>");
 				$(message_champs).css("color", "red");
 				$(message_champs).css("font-weight", "bold");
+				$(form).css("height", "855px");
+
 			}
 		})
 		/*//en quittant le champs
@@ -153,19 +158,19 @@ if($_POST["formtype"] == "inscription"){
 	
 	//Verification des champs
 	//Nom
-	VerificationChamps("#nom","#message_nom");
+	VerificationChamps("#nom","#message_nom","form.inscription");
 	RemplirChamps("#nom","#message_nom");
 	//Prenom
-	VerificationChamps("#prenom","#message_prenom");
+	VerificationChamps("#prenom","#message_prenom","form.inscription");
 	RemplirChamps("#prenom","#message_prenom");
 	//Login
-	VerificationChamps("#login","#message_login");
+	VerificationChamps("#login","#message_login","form.inscription");
 	RemplirChamps("#login","#message_login");
 	//Mdp
-	VerificationChamps("#mdp","#message_mdp");
+	VerificationChamps("#mdp","#message_mdp","form.inscription");
 	RemplirChamps("#mdp","#message_mdp");
 	//verfification du mdp
-	VerificationChamps("#mdpc","#message_mdpc");
+	VerificationChamps("#mdpc","#message_mdpc","form.inscription");
 	RemplirChamps("#mdpc","#message_mdpc");
 
 	
@@ -186,4 +191,7 @@ if($_POST["formtype"] == "inscription"){
 	
 </script>
 </body>
+<footer>
+	<p>Copyright © Développé par WASEF Alexandra</p>
+</footer>
 </html>

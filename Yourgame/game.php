@@ -1,3 +1,9 @@
+<?php
+	session_start();
+	if (!isset($_SESSION['login'])){
+		header("Location:index.php");
+	}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -9,8 +15,10 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 	<h1>Pierre Feuille Ciseau</h1>
-
-	
+	<div id="bouton">
+	<button id='deconnexion'><a href="deconnexion.php" id="none">Déconnexion</a></button>
+	</div>
+	<div id="jeu">
 	<div id="head">
 	<p>MANCHE<div id="manche">0</div></p>
 	</div>
@@ -20,7 +28,15 @@
 	<div id="score">
 		
 	<div id="sc_user">
-	<p>Vous<div id="score_user">0</div></p>
+	<p><?php
+	if (isset($_SESSION['login'])) {
+	 	echo $_SESSION['login'];
+	}
+	else{
+		echo "Vous";
+	}
+	
+	?><div id="score_user">0</div></p>
 	</div>
 	<div id="sc_robot">
 	<p>Adversaire<div id="score_robot">0</div></p>
@@ -32,12 +48,11 @@
 	<button id="pierre"> <img src="css/images/pierre.jpg" alt="Pierre"></button>
 	<button id="feuille"><img src="css/images/feuille.jpg" alt="Feuille"></button>
 	<button id="ciseau"><img src="css/images/ciseau.jpg" alt="Ciseau"></button>
-	
+</div></div>
+	<div id="bouton">
 	<div id="combat"></div>
 	<div id="resultat"></div>
 	</div>
-	
-
 	<script type="text/javascript">
 
 	//function
